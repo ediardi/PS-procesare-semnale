@@ -234,34 +234,65 @@ print(f"Valoare maximă: {custom_2d.max():.3f}")
 print("Pattern: Cercuri concentrice cu unde radiale")
 
 # Afișarea graficelor pentru toate semnalele
+print(f"\nInformații despre primele 3 repetări:")
+print("="*50)
+
 # Figura pentru semnalele 1D
 fig3, axs3 = plt.subplots(2, 2, figsize=(15, 10))
-fig3.suptitle('Semnale 1D - Exercițiul 2', fontsize=16, fontweight='bold')
+fig3.suptitle('Semnale 1D - Exercițiul 2 (Primele 3 Repetări)', fontsize=16, fontweight='bold')
 
-# (a) Semnal sinusoidal 400 Hz
-axs3[0, 0].plot(t_sin[:400], sin_signal[:400], 'b-', linewidth=1.5)  # Afișez doar primele 400 de puncte
-axs3[0, 0].set_title(f'(a) Sinusoidal {f_sin} Hz - {N_samples} eșantioane')
+# (a) Semnal sinusoidal 400 Hz - primele 3 repetări
+T_period_sin = 1/f_sin  # Perioada semnalului
+t_3_periods_sin = 3 * T_period_sin  # Timpul pentru 3 perioade
+mask_sin = t_sin <= t_3_periods_sin  # Masca pentru primele 3 perioade
+print(f"Perioada semnalului {f_sin} Hz: {T_period_sin:.4f} s")
+print(f"Timpul pentru 3 perioade: {t_3_periods_sin:.4f} s")
+print(f"Numărul de puncte afișate: {np.sum(mask_sin)}")
+
+axs3[0, 0].plot(t_sin[mask_sin], sin_signal[mask_sin], 'b-', linewidth=1.5)
+axs3[0, 0].set_title(f'(a) Sinusoidal {f_sin} Hz - Primele 3 repetări')
 axs3[0, 0].set_xlabel('Timp (s)')
 axs3[0, 0].set_ylabel('Amplitudine')
 axs3[0, 0].grid(True, alpha=0.3)
 
-# (b) Semnal sinusoidal 800 Hz
-axs3[0, 1].plot(t_sin2[:800], sin_signal2[:800], 'r-', linewidth=1.5)  # Afișez doar primele 800 de puncte
-axs3[0, 1].set_title(f'(b) Sinusoidal {f_sin2} Hz - {T_duration} secunde')
+# (b) Semnal sinusoidal 800 Hz - primele 3 repetări
+T_period_sin2 = 1/f_sin2  # Perioada semnalului
+t_3_periods_sin2 = 3 * T_period_sin2  # Timpul pentru 3 perioade
+mask_sin2 = t_sin2 <= t_3_periods_sin2  # Masca pentru primele 3 perioade
+print(f"Perioada semnalului {f_sin2} Hz: {T_period_sin2:.6f} s")
+print(f"Timpul pentru 3 perioade: {t_3_periods_sin2:.6f} s")
+print(f"Numărul de puncte afișate: {np.sum(mask_sin2)}")
+
+axs3[0, 1].plot(t_sin2[mask_sin2], sin_signal2[mask_sin2], 'r-', linewidth=1.5)
+axs3[0, 1].set_title(f'(b) Sinusoidal {f_sin2} Hz - Primele 3 repetări')
 axs3[0, 1].set_xlabel('Timp (s)')
 axs3[0, 1].set_ylabel('Amplitudine')
 axs3[0, 1].grid(True, alpha=0.3)
 
-# (c) Semnal sawtooth
-axs3[1, 0].plot(t_saw[:480], sawtooth_signal[:480], 'g-', linewidth=1.5)  # Afișez primele 480 de puncte
-axs3[1, 0].set_title(f'(c) Sawtooth {f_saw} Hz')
+# (c) Semnal sawtooth - primele 3 repetări
+T_period_saw = 1/f_saw  # Perioada semnalului
+t_3_periods_saw = 3 * T_period_saw  # Timpul pentru 3 perioade
+mask_saw = t_saw <= t_3_periods_saw  # Masca pentru primele 3 perioade
+print(f"Perioada semnalului sawtooth {f_saw} Hz: {T_period_saw:.6f} s")
+print(f"Timpul pentru 3 perioade: {t_3_periods_saw:.6f} s")
+print(f"Numărul de puncte afișate: {np.sum(mask_saw)}")
+
+axs3[1, 0].plot(t_saw[mask_saw], sawtooth_signal[mask_saw], 'g-', linewidth=1.5)
+axs3[1, 0].set_title(f'(c) Sawtooth {f_saw} Hz - Primele 3 repetări')
 axs3[1, 0].set_xlabel('Timp (s)')
 axs3[1, 0].set_ylabel('Amplitudine')
 axs3[1, 0].grid(True, alpha=0.3)
 
-# (d) Semnal square
-axs3[1, 1].plot(t_square[:600], square_signal[:600], 'm-', linewidth=1.5)  # Afișez primele 600 de puncte
-axs3[1, 1].set_title(f'(d) Square {f_square} Hz')
+# (d) Semnal square - primele 3 repetări
+T_period_square = 1/f_square  # Perioada semnalului
+t_3_periods_square = 3 * T_period_square  # Timpul pentru 3 perioade
+mask_square = t_square <= t_3_periods_square  # Masca pentru primele 3 perioade
+print(f"Perioada semnalului square {f_square} Hz: {T_period_square:.6f} s")
+print(f"Timpul pentru 3 perioade: {t_3_periods_square:.6f} s")
+print(f"Numărul de puncte afișate: {np.sum(mask_square)}")
+
+axs3[1, 1].plot(t_square[mask_square], square_signal[mask_square], 'm-', linewidth=1.5)
+axs3[1, 1].set_title(f'(d) Square {f_square} Hz - Primele 3 repetări')
 axs3[1, 1].set_xlabel('Timp (s)')
 axs3[1, 1].set_ylabel('Amplitudine')
 axs3[1, 1].grid(True, alpha=0.3)
