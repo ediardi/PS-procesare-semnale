@@ -56,7 +56,7 @@ plot_rows(F, os.path.join(this_dir, "fourier_matrix.png"))
 # Ex 2: Înfășurare semnal
 fs, duration, f0 = 1000, 1.0, 5
 t = np.arange(0, duration, 1.0/fs)
-x = np.sin(2 * np.pi * f0 * t)
+x = np.sin(2 * np.pi * f0 * t + np.pi/4)
 n = np.arange(t.size)
 
 omega_wrap = 15
